@@ -1,0 +1,16 @@
+[package]
+name = "scsi"
+version = "0.1.0"
+authors = ["Adam Disney"]
+edition = "2018"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+getopts = "*"
+libc = "*"
+phf = { version = "0.8", features = ["macros"] }
+
+[lib]
+crate-type = ["cdylib", "lib"]
