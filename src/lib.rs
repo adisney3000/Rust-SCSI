@@ -44,10 +44,6 @@ or add functions for understanding various combinations of status.
 /// SCSI Command structures implement this trait
 pub trait Command {
   fn to_bytes(&self) -> Result <Vec <u8>, &'static str>;
-
-  //Not sure if parse_sense needs to be part of this trait since not all commands
-  //will have anything to parse but it does make it easier for the user to generically
-  //just call parse_sense for every command issued.
   fn parse_sense(&self, sense: &Sense) -> String;
 }
 
@@ -112,7 +108,10 @@ pub mod commands {
 
   mod read_position;
   pub use read_position::ReadPosition;
-    //TODO Also needs a parser
+  pub use read_position::ReadPositionOutput;
+  pub use read_position::ReadPositionOutputShortForm;
+  pub use read_position::ReadPositionOutputLongForm;
+  pub use read_position::ReadPositionOutputExtendedForm;
 
   mod read_reverse_6;
   pub use read_reverse_6::ReadReverse6;

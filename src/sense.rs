@@ -848,7 +848,7 @@ impl SenseFieldPointer {
       c_d: buf[0] & 0x40 == 0x40,
       bpv: buf[0] & 0x08 == 0x08,
       bit_pointer: buf[0] & 0x07,
-      field_pointer: u16::from_be_bytes(buf[1..2].try_into().unwrap()),
+      field_pointer: u16::from_be_bytes(buf[1..3].try_into().unwrap()),
     })
   }
 }
@@ -867,7 +867,7 @@ impl SenseActualRetryCount {
     }
 
     Some(SenseActualRetryCount {
-      actual_retry_count: u16::from_be_bytes(buf[1..2].try_into().unwrap()),
+      actual_retry_count: u16::from_be_bytes(buf[1..3].try_into().unwrap()),
     })
   }
 }
@@ -886,7 +886,7 @@ impl SenseProgress {
     }
 
     Some(SenseProgress {
-      progress: u16::from_be_bytes(buf[1..2].try_into().unwrap()),
+      progress: u16::from_be_bytes(buf[1..3].try_into().unwrap()),
     })
   }
 }
@@ -911,7 +911,7 @@ impl SenseSegmentPointer {
       sd: buf[0] & 0x20 == 0x20,
       bpv: buf[0] & 0x08 == 0x08,
       bit_pointer: buf[0] & 0x07,
-      field_pointer: u16::from_be_bytes(buf[1..2].try_into().unwrap()),
+      field_pointer: u16::from_be_bytes(buf[1..3].try_into().unwrap()),
     })
   }
 }
