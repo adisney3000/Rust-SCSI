@@ -7,45 +7,51 @@ pub struct ReadBlockLimits {
   pub mloi: bool,
 }
 
-pub struct ReadBlockLimitsRange {
+#[derive(Debug)]
+pub enum ReadBlockLimitsOutput {
+  BlockLimits(ReadBlockLimitsOutputRange),
+  MaximumLogicalObjectIdentifier(u64),
+}
+
+#[derive(Default, Debug)]
+pub struct ReadBlockLimitsOutputRange {
   pub granularity: u8,
   pub maximum_block_length_limit: u32,
   pub minimum_block_length_limit: u16,
 }
 
-pub enum ReadBlockLimitsOutput {
-  BlockLimits(ReadBlockLimitsRange),
-  MaximumLogicalObjectIdentifier(u64),
-}
-
 impl ReadBlockLimits {
   const OP_CODE: u8 = 0x05;
-  pub const BLOCK_LIMITS_BUF_SIZE: usize = 6;
-  pub const MLOI_BUF_SIZE: usize = 20;
+  pub const BLOCK_LIMITS_SIZE: usize = 6;
+  pub const MLOI_SIZE: usize = 20;
   
   pub fn new() -> ReadBlockLimits {
     Default::default()
   }
 
-  pub fn parse_output(&self, buf: &[u8]) -> Result <ReadBlockLimitsOutput, &'static str> {
+  pub fn output_len(&self) -> usize {
+    if self.mloi { Self::MLOI_SIZE } else { Self::BLOCK_LIMITS_SIZE }
+  }
+
+  pub fn parse_buffer(&self, buf: &[u8]) -> Option <ReadBlockLimitsOutput> {
     if self.mloi {
-      if buf.len() < Self::MLOI_BUF_SIZE {
-        Err("Buffer length invalid")
+      if buf.len() < Self::MLOI_SIZE {
+        None
       } else {
         let limit = u64::from_be_bytes(buf[12..20].try_into().unwrap());
-        Ok(ReadBlockLimitsOutput::MaximumLogicalObjectIdentifier(limit))
+        Some(ReadBlockLimitsOutput::MaximumLogicalObjectIdentifier(limit))
       }
-    } else if buf.len() < Self::BLOCK_LIMITS_BUF_SIZE {
-      Err("Buffer length invalid")
+    } else if buf.len() < Self::BLOCK_LIMITS_SIZE {
+      None
     } else {
-      let block_limits = ReadBlockLimitsRange {
+      let block_limits = ReadBlockLimitsOutputRange {
         granularity: buf[0] & 0x1F,
         maximum_block_length_limit:
             u32::from_be_bytes([0, buf[1], buf[2], buf[3]]),
         minimum_block_length_limit:
             u16::from_be_bytes(buf[4..6].try_into().unwrap()),
       };
-      Ok(ReadBlockLimitsOutput::BlockLimits(block_limits))
+      Some(ReadBlockLimitsOutput::BlockLimits(block_limits))
     }
   }
 }

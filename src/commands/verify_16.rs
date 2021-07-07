@@ -22,7 +22,7 @@ impl Verify16 {
   }
 }
 
-impl crate::NoIO for Verify16 {
+impl crate::Input for Verify16 {
 }
 
 impl crate::Command for Verify16 {

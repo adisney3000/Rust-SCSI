@@ -97,7 +97,7 @@ pub mod commands {
   mod read_block_limits;
   pub use read_block_limits::ReadBlockLimits;
   pub use read_block_limits::ReadBlockLimitsOutput;
-  pub use read_block_limits::ReadBlockLimitsRange;
+  pub use read_block_limits::ReadBlockLimitsOutputRange;
     //TODO This requires output to be parsed. Thinking that in general
     //  if output is to be parsed that the user would have to parse it
     //  with a method on the SCSI command. So either
@@ -143,6 +143,7 @@ pub mod commands {
 
   mod space_16;
   pub use space_16::Space16;
+  pub use space_16::Space16Positioning;
 
   mod verify_6;
   pub use verify_6::Verify6;

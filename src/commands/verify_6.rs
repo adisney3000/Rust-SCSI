@@ -20,7 +20,7 @@ impl Verify6 {
   }
 }
 
-impl crate::NoIO for Verify6 {
+impl crate::Input for Verify6 {
 }
 
 impl crate::Command for Verify6 {

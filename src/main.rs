@@ -160,35 +160,65 @@ fn fill_commands(commands: &mut BTreeMap <&str, ShellCommand>) {
   commands.insert("write_6",
       ShellCommand { func:write_6, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("load_unload",
-      //ShellCommand { func:load_unload, options });
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("i", "immed", "immediate flag");
+  options.optflag("h", "hold", "hold flag");
+  options.optflag("e", "eot", "end of tape flag");
+  options.optflag("r", "reten", "retension flag");
+  options.optflag("l", "load", "load flag");
+  commands.insert("load_unload",
+      ShellCommand { func:load_unload, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("locate_10",
-      //ShellCommand { func:locate_10, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "bt", "TODO");
+  options.optflag("", "cp", "TODO");
+  options.optflag("i", "immed", "immediate flag");
+  options.reqopt("l", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.optopt("p", "partition", "partition", "<u8>");
+  commands.insert("locate_10",
+      ShellCommand { func:locate_10, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("locate_16",
-      //ShellCommand { func:locate_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optopt("", "dest_type", "TODO", "<u8>"); //reqopt?? TODO
+  options.optflag("", "rsvd", "TODO");
+  options.optflag("", "cp", "TODO");
+  options.optflag("i", "immed", "immediate flag");
+  options.optflag("", "bam", "TODO");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("l", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  commands.insert("locate_16",
+      ShellCommand { func:locate_16, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("prevent_allow_medium_removal",
-      //ShellCommand { func:prevent_allow_medium_removal, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.reqopt("p", "prevent", "prevent", "<u8>");
+  commands.insert("prevent_allow_medium_removal",
+      ShellCommand { func:prevent_allow_medium_removal, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("read_16",
-      //ShellCommand { func:read_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("s", "sili", "suppress incorrect-length indicator flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("l", "transfer_length", "number of bytes/blocks to read", "<u32>");
+  options.optopt("", "output_file", "file to write output; stdout otherwise", "<str>");
+  commands.insert("read_16",
+      ShellCommand { func:read_16, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("read_block_limits",
-      //ShellCommand { func:read_block_limits, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "mloi", "maximum logical object identifier flag");
+  commands.insert("read_block_limits",
+      ShellCommand { func:read_block_limits, options });
 
   options = Options::new();
   options.optflag("?", "help", "");
@@ -203,36 +233,70 @@ fn fill_commands(commands: &mut BTreeMap <&str, ShellCommand>) {
   commands.insert("read_position",
       ShellCommand { func:read_position, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("read_reverse_16",
-      //ShellCommand { func:read_reverse_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("b", "bytord", "byte order flag");
+  options.optflag("s", "sili", "suppress incorrect-length indicator flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("l", "transfer_length", "number of bytes/blocks to read", "<u32>");
+  options.optopt("", "output_file", "file to write output; stdout otherwise", "<str>");
+  commands.insert("read_reverse_16",
+      ShellCommand { func:read_reverse_16, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("read_reverse_6",
-      //ShellCommand { func:read_reverse_6, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("b", "bytord", "byte order flag");
+  options.optflag("s", "sili", "suppress incorrect-length indicator flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.reqopt("l", "transfer_length", "number of bytes/blocks to read", "<u32>");
+  options.optopt("", "output_file", "file to write output; stdout otherwise", "<str>");
+  commands.insert("read_reverse_6",
+      ShellCommand { func:read_reverse_6, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("recover_buffered_data",
-      //ShellCommand { func:recover_buffered_data, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("s", "sili", "suppress incorrect-length indicator flag");
+  options.optflag("", "rsvd", "TODO");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("l", "transfer_length", "number of bytes/blocks to read", "<u32>");
+  commands.insert("recover_buffered_data",
+      ShellCommand { func:recover_buffered_data, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("report_density_support",
-      //ShellCommand { func:report_density_support, options });
+  //TODO Needs an output parser
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "medium_type", "medium type flag");
+  options.optflag("", "media", "media flag");
+  commands.insert("report_density_support",
+      ShellCommand { func:report_density_support, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("set_capacity",
-      //ShellCommand { func:set_capacity, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("i", "immed", "immediate flag");
+  options.reqopt("%", "medium_for_proportion_value", "sets % space usable to this over 65535", "<u16>");
+  commands.insert("set_capacity",
+      ShellCommand { func:set_capacity, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("space_16",
-      //ShellCommand { func:space_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.reqopt("", "code", "determines type of object to space over", "<u8>");
+  options.reqopt("", "count", "number of objects to space over", "<u64>");
+  options.optflag("", "position", "if set, position based on partition and logical_object_identifier before spacing");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.optopt("", "logical_object_identifier", "logical object identifier TODO", "<u64>");
+  commands.insert("space_16",
+      ShellCommand { func:space_16, options });
 
+  //TODO
   options = Options::new();
   options.optflag("?", "help", "");
   options.reqopt("", "code", "determines type of object to space over", "<u8>");
@@ -240,25 +304,63 @@ fn fill_commands(commands: &mut BTreeMap <&str, ShellCommand>) {
   commands.insert("space_6",
       ShellCommand { func:space_6, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("verify_16",
-      //ShellCommand { func:verify_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "vte", "verify to end of data flag");
+  options.optflag("", "vlbpm", "verify logical block protection method flag");
+  options.optflag("", "vbf", "verify by filemarks flag");
+  options.optflag("i", "immed", "immediate flag");
+  options.optflag("", "bytcmp", "byte compare flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("l", "verification_length", "number of bytes/blocks to verify", "<u32>");
+  options.optflag("", "show_input", "display the inputs given to device");
+  options.reqopt("", "input_file", "file containing binary input", "<str>");
+  commands.insert("verify_16",
+      ShellCommand { func:verify_16, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("verify_6",
-      //ShellCommand { func:verify_6, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "vte", "verify to end of data flag");
+  options.optflag("", "vlbpm", "verify logical block protection method flag");
+  options.optflag("", "vbf", "verify by filemarks flag");
+  options.optflag("i", "immed", "immediate flag");
+  options.optflag("", "bytcmp", "byte compare flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.reqopt("l", "verification_length", "number of bytes/blocks to verify", "<u32>");
+  options.optflag("", "show_input", "display the inputs given to device");
+  options.reqopt("", "input_file", "file containing binary input", "<str>");
+  commands.insert("verify_6",
+      ShellCommand { func:verify_6, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("write_16",
-      //ShellCommand { func:write_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "fcs", "first command in sequence flag");
+  options.optflag("", "lcs", "last command in sequence flag");
+  options.optflag("f", "fixed", "read fixed size blocks flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("l", "transfer_length", "number of bytes/blocks to write", "<u32>");
+  options.optflag("", "show_input", "display the inputs given to device");
+  options.reqopt("", "input_file", "file containing binary input", "<str>");
+  commands.insert("write_16",
+      ShellCommand { func:write_16, options });
 
-  //options = Options::new();
-  //options.optflag("?", "help", "");
-  //commands.insert("write_filemarks_16",
-      //ShellCommand { func:write_filemarks_16, options });
+  //TODO
+  options = Options::new();
+  options.optflag("?", "help", "");
+  options.optflag("", "fcs", "first command in sequence flag");
+  options.optflag("", "lcs", "last command in sequence flag");
+  options.optflag("i", "immed", "immediate flag");
+  options.optopt("p", "partition", "partition", "<u8>");
+  options.reqopt("", "logical_object_identifier", "logical object identifier TODO", "<u32>");
+  options.reqopt("c", "filemark_count", "number of filemarks to write", "<u32>");
+  commands.insert("write_filemarks_16",
+      ShellCommand { func:write_filemarks_16, options });
 
   options = Options::new();
   options.optflag("?", "help", "");
@@ -280,7 +382,7 @@ macro_rules! get_opt_or_return {
   };
 }
 
-macro_rules! print_status_or_error_and_return {
+macro_rules! print_status_or_return_error {
   ( $res:expr, $cmd:expr ) => {
     match $res {
       Ok(status) => {
@@ -307,7 +409,7 @@ fn rewind(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
 fn read_6(device: &mut scsi::Device, matches: &Matches) {
@@ -322,7 +424,7 @@ fn read_6(device: &mut scsi::Device, matches: &Matches) {
   
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 
   //BLAH! Rewrite this to be more flat!
   match matches.opt_str("output_file") {
@@ -358,7 +460,7 @@ fn allow_overwrite(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
 fn erase_16(device: &mut scsi::Device, matches: &Matches) {
@@ -376,7 +478,7 @@ fn erase_16(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
 fn erase_6(device: &mut scsi::Device, matches: &Matches) {
@@ -390,7 +492,7 @@ fn erase_6(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
 fn format_medium(device: &mut scsi::Device, matches: &Matches) {
@@ -438,7 +540,7 @@ fn format_medium(device: &mut scsi::Device, matches: &Matches) {
     println!("Input buffer: {:x?}", buf);
   }
   let result = device.issue_cmd_with_input(&cmd, &buf);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
 fn write_6(device: &mut scsi::Device, matches: &Matches) {
@@ -482,15 +584,119 @@ fn write_6(device: &mut scsi::Device, matches: &Matches) {
     println!("Input buffer: {:x?}", buf);
   }
   let result = device.issue_cmd_with_input(&cmd, &buf);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
-//fn load_unload(device: &mut scsi::Device, matches: &Matches) { }
-//fn locate_10(device: &mut scsi::Device, matches: &Matches) { }
-//fn locate_16(device: &mut scsi::Device, matches: &Matches) { }
-//fn prevent_allow_medium_removal(device: &mut scsi::Device, matches: &Matches) { }
-//fn read_16(device: &mut scsi::Device, matches: &Matches) { }
-//fn read_block_limits(device: &mut scsi::Device, matches: &Matches) { }
+fn load_unload(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::LoadUnload {
+    immed: matches.opt_present("immed"),
+    hold: matches.opt_present("hold"),
+    eot: matches.opt_present("eot"),
+    reten: matches.opt_present("reten"),
+    load: matches.opt_present("load"),
+  };
+  
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn locate_10(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Locate10 {
+    bt: matches.opt_present("bt"),
+    cp: matches.opt_present("cp"),
+    immed: matches.opt_present("immed"),
+    logical_object_identifier: get_opt_or_return!("logical_object_identifier", matches),
+    partition: get_opt_or_return!("partition", matches),
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn locate_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Locate16 {
+    dest_type: get_opt_or_return!("dest_type", matches),
+    rsvd: matches.opt_present("rsvd"),
+    cp: matches.opt_present("cp"),
+    immed: matches.opt_present("immed"),
+    bam: matches.opt_present("bam"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier: get_opt_or_return!("logical_object_identifier", matches),
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn prevent_allow_medium_removal(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::PreventAllowMediumRemoval {
+    prevent: get_opt_or_return!("prevent", matches),
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn read_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Read16 {
+    sili: matches.opt_present("sili"),
+    fixed: matches.opt_present("fixed"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier: get_opt_or_return!("logical_object_identifier", matches),
+    transfer_length: get_opt_or_return!("transfer_length", matches),
+  };
+
+  let mut buf: Vec <u8> = vec![0; cmd.transfer_length as usize];
+  
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
+  print_status_or_return_error!(result, cmd);
+
+  //BLAH! Rewrite this to be more flat!
+  match matches.opt_str("output_file") {
+    Some(output_file_name) => {
+      match File::create(&output_file_name) {
+        Ok(mut f) => {
+          match f.write(&buf) {
+            Ok(l) => {
+              if l < buf.len() {
+                eprintln!("only wrote {} bytes to file", l);
+              }
+            },
+            Err(e) => { eprintln!("failed to write buffer to file: {}", e); },
+          }
+        },
+        Err(e) => {
+          eprintln!("failed to create {}: {}", output_file_name, e);
+        },
+      }
+    },
+    None => {
+      println!("Buffer: {:x?}", buf);
+    },
+  }
+}
+
+fn read_block_limits(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::ReadBlockLimits {
+    mloi: matches.opt_present("mloi"),
+  };
+
+  let mut buf: Vec <u8> = vec![0; cmd.output_len()];
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, &mut buf);
+  print_status_or_return_error!(result, cmd);
+
+  match cmd.parse_buffer(&buf) {
+    Some(t) => { println!("Known output:\n{:#?}", t); },
+    None => { println!("Unknown output:\n{:x?}", buf); },
+  }
+}
 
 fn read_position(device: &mut scsi::Device, matches: &Matches) {
   let mut cmd = commands::ReadPosition {
@@ -499,14 +705,14 @@ fn read_position(device: &mut scsi::Device, matches: &Matches) {
   };
 
   if cmd.allocation_length == 0 {
-    cmd.allocation_length = cmd.output_len();
+    cmd.allocation_length = cmd.output_len() as u16;
   }
 
   let mut buf: Vec <u8> = vec![0; cmd.allocation_length.into()];
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd_with_output(&cmd, &mut buf);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 
   match cmd.parse_buffer(&buf) {
     Some(t) => { println!("Known output:\n{:#?}", t); },
@@ -514,12 +720,176 @@ fn read_position(device: &mut scsi::Device, matches: &Matches) {
   }
 }
 
-//fn read_reverse_16(device: &mut scsi::Device, matches: &Matches) { }
-//fn read_reverse_6(device: &mut scsi::Device, matches: &Matches) { }
-//fn recover_buffered_data(device: &mut scsi::Device, matches: &Matches) { }
-//fn report_density_support(device: &mut scsi::Device, matches: &Matches) { }
-//fn set_capacity(device: &mut scsi::Device, matches: &Matches) { }
-//fn space_16(device: &mut scsi::Device, matches: &Matches) { }
+fn read_reverse_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::ReadReverse16 {
+    bytord: matches.opt_present("bytord"),
+    sili: matches.opt_present("sili"),
+    fixed: matches.opt_present("fixed"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier: get_opt_or_return!("logical_object_identifier", matches),
+    transfer_length: get_opt_or_return!("transfer_length", matches),
+  };
+
+  let mut buf: Vec <u8> = Vec::new();
+  buf.resize(cmd.transfer_length as usize, 0);
+  
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
+  print_status_or_return_error!(result, cmd);
+
+  //BLAH! Rewrite this to be more flat!
+  match matches.opt_str("output_file") {
+    Some(output_file_name) => {
+      match File::create(&output_file_name) {
+        Ok(mut f) => {
+          match f.write(&buf) {
+            Ok(l) => {
+              if l < buf.len() {
+                eprintln!("only wrote {} bytes to file", l);
+              }
+            },
+            Err(e) => { eprintln!("failed to write buffer to file: {}", e); },
+          }
+        },
+        Err(e) => {
+          eprintln!("failed to create {}: {}", output_file_name, e);
+        },
+      }
+    },
+    None => {
+      println!("Buffer: {:x?}", buf);
+    },
+  }
+}
+
+fn read_reverse_6(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::ReadReverse6 {
+    bytord: matches.opt_present("bytord"),
+    sili: matches.opt_present("sili"),
+    fixed: matches.opt_present("fixed"),
+    transfer_length: get_opt_or_return!("transfer_length", matches),
+  };
+  
+  let mut buf: Vec <u8> = Vec::new();
+  buf.resize(cmd.transfer_length as usize, 0);
+  
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
+  print_status_or_return_error!(result, cmd);
+
+  //BLAH! Rewrite this to be more flat!
+  match matches.opt_str("output_file") {
+    Some(output_file_name) => {
+      match File::create(&output_file_name) {
+        Ok(mut f) => {
+          match f.write(&buf) {
+            Ok(l) => {
+              if l < buf.len() {
+                eprintln!("only wrote {} bytes to file", l);
+              }
+            },
+            Err(e) => { eprintln!("failed to write buffer to file: {}", e); },
+          }
+        },
+        Err(e) => {
+          eprintln!("failed to create {}: {}", output_file_name, e);
+        },
+      }
+    },
+    None => {
+      println!("Buffer: {:x?}", buf);
+    },
+  }
+}
+
+fn recover_buffered_data(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::RecoverBufferedData {
+    sili: matches.opt_present("sili"),
+    fixed: matches.opt_present("fixed"),
+    transfer_length: get_opt_or_return!("transfer_length", matches),
+  };
+
+  let mut buf: Vec <u8> = Vec::new();
+  buf.resize(cmd.transfer_length as usize, 0);
+  
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
+  print_status_or_return_error!(result, cmd);
+
+  //BLAH! Rewrite this to be more flat!
+  match matches.opt_str("output_file") {
+    Some(output_file_name) => {
+      match File::create(&output_file_name) {
+        Ok(mut f) => {
+          match f.write(&buf) {
+            Ok(l) => {
+              if l < buf.len() {
+                eprintln!("only wrote {} bytes to file", l);
+              }
+            },
+            Err(e) => { eprintln!("failed to write buffer to file: {}", e); },
+          }
+        },
+        Err(e) => {
+          eprintln!("failed to create {}: {}", output_file_name, e);
+        },
+      }
+    },
+    None => {
+      println!("Buffer: {:x?}", buf);
+    },
+  }
+}
+
+fn report_density_support(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::ReportDensitySupport {
+    medium_type: matches.opt_present("medium_type"),
+    media: matches.opt_present("media"),
+    allocation_length: u16::MAX,
+  };
+
+  let mut buf: Vec <u8> = vec![0; cmd.allocation_length as usize];
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd_with_output(&cmd, buf.as_mut_slice());
+  print_status_or_return_error!(result, cmd);
+  
+  match cmd.parse_buffer(&buf) {
+    Some(t) => { println!("Known output:\n{:#?}", t); },
+    None => { println!("Unknown output:\n{:x?}", buf); },
+  }
+}
+
+fn set_capacity(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::SetCapacity {
+    immed: matches.opt_present("immed"),
+    medium_for_proportion_value:
+        get_opt_or_return!("medium_for_proportion_value", matches),
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn space_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Space16 {
+    code: get_opt_or_return!("code", matches),
+    count: get_opt_or_return!("count", matches),
+    positioning_info: if matches.opt_present("position") {
+      Some(commands::Space16Positioning {
+        partition_number: get_opt_or_return!("partition_number", matches),
+        logical_object_identifier: get_opt_or_return!("logical_object_identifier", matches),
+      })
+    } else {
+      None
+    },
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
 
 fn space_6(device: &mut scsi::Device, matches: &Matches) {
   let cmd = commands::Space6 {
@@ -529,14 +899,183 @@ fn space_6(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }
 
-//fn verify_16(device: &mut scsi::Device, matches: &Matches) { }
-//fn verify_6(device: &mut scsi::Device, matches: &Matches) { }
-//fn write_16(device: &mut scsi::Device, matches: &Matches) { }
+fn verify_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Verify16 {
+    vte: matches.opt_present("vte"),
+    vlbpm: matches.opt_present("vlbpm"),
+    vbf: matches.opt_present("vbf"),
+    immed: matches.opt_present("immed"),
+    bytcmp: matches.opt_present("bytcmp"),
+    fixed: matches.opt_present("fixed"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier:
+        get_opt_or_return!("logical_object_identifier", matches),
+    verification_length: get_opt_or_return!("verification_length", matches),
+  };
 
-//fn write_filemarks_16(device: &mut scsi::Device, matches: &Matches) { }
+  //Allocate the buffer and fill in if bytcmp is set
+  let buf_len = if cmd.bytcmp {
+    cmd.verification_length.try_into()
+  } else { Ok(0) };
+  if buf_len.is_err() {
+    eprintln!("failed to convert verification_length to usize!");
+    return;
+  }
+  let mut buf: Vec <u8> = vec![0; buf_len.unwrap()];
+
+  if buf.len() > 0 {
+    let input_file_name: String = get_opt_or_return!("input_file", matches);
+    let file = File::open(&input_file_name);
+    if let Err(e) = file {
+      eprintln!("failed to open {}: {}", input_file_name, e);
+      return;
+    }
+
+    match file.unwrap().read(&mut buf) {
+      Ok(read_bytes) => {
+        if read_bytes != buf.len() {
+          eprintln!("failed to read {} bytes from {}",
+              cmd.verification_length, input_file_name);
+          return;
+        }
+      },
+        Err(e) => {
+          eprintln!("error occured while reading input file: {}", e);
+          return;
+        },
+    }
+  }
+
+  //Now issue the command
+  println!("Issuing: {:#?}", cmd);
+  if matches.opt_present("show_input") {
+    println!("Input buffer: {:x?}", buf);
+  }
+  let result = device.issue_cmd_with_input(&cmd, &buf);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn verify_6(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Verify6 {
+    vte: matches.opt_present("vte"),
+    vlbpm: matches.opt_present("vlbpm"),
+    vbf: matches.opt_present("vbf"),
+    immed: matches.opt_present("immed"),
+    bytcmp: matches.opt_present("bytcmp"),
+    fixed: matches.opt_present("fixed"),
+    verification_length: get_opt_or_return!("verification_length", matches),
+  };
+
+  //Allocate the buffer and fill in if bytcmp is set
+  let buf_len = if cmd.bytcmp {
+    cmd.verification_length.try_into()
+  } else { Ok(0) };
+  if buf_len.is_err() {
+    eprintln!("failed to convert verification_length to usize!");
+    return;
+  }
+  let mut buf: Vec <u8> = vec![0; buf_len.unwrap()];
+
+  if buf.len() > 0 {
+    let input_file_name: String = get_opt_or_return!("input_file", matches);
+    let file = File::open(&input_file_name);
+    if let Err(e) = file {
+      eprintln!("failed to open {}: {}", input_file_name, e);
+      return;
+    }
+
+    match file.unwrap().read(&mut buf) {
+      Ok(read_bytes) => {
+        if read_bytes != buf.len() {
+          eprintln!("failed to read {} bytes from {}",
+              cmd.verification_length, input_file_name);
+          return;
+        }
+      },
+        Err(e) => {
+          eprintln!("error occured while reading input file: {}", e);
+          return;
+        },
+    }
+  }
+
+  //Now issue the command
+  println!("Issuing: {:#?}", cmd);
+  if matches.opt_present("show_input") {
+    println!("Input buffer: {:x?}", buf);
+  }
+  let result = device.issue_cmd_with_input(&cmd, &buf);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn write_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::Write16 {
+    fcs: matches.opt_present("fcs"),
+    lcs: matches.opt_present("lcs"),
+    rsvd: matches.opt_present("rsvd"),
+    fixed: matches.opt_present("fixed"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier:
+        get_opt_or_return!("logical_object_identifier", matches),
+    transfer_length: get_opt_or_return!("transfer_length", matches),
+  };
+
+  //Allocate the buffer and fill in
+  let buf_len = cmd.transfer_length.try_into();
+  if buf_len.is_err() {
+    eprintln!("failed to convert transfer_length to usize!");
+    return;
+  }
+  let mut buf: Vec <u8> = vec![0; buf_len.unwrap()];
+
+  let input_file_name: String = get_opt_or_return!("input_file", matches);
+  let file = File::open(&input_file_name);
+  if let Err(e) = file {
+    eprintln!("failed to open {}: {}", input_file_name, e);
+    return;
+  }
+  
+  match file.unwrap().read(&mut buf) {
+    Ok(read_bytes) => {
+      if read_bytes != buf.len() {
+        eprintln!("failed to read {} bytes from {}",
+            cmd.transfer_length, input_file_name);
+        return;
+      }
+    },
+    Err(e) => {
+      eprintln!("error occured while reading input file: {}", e);
+      return;
+    },
+  }
+
+  //Now issue the command
+  println!("Issuing: {:#?}", cmd);
+  if matches.opt_present("show_input") {
+    println!("Input buffer: {:x?}", buf);
+  }
+  let result = device.issue_cmd_with_input(&cmd, &buf);
+  print_status_or_return_error!(result, cmd);
+}
+
+fn write_filemarks_16(device: &mut scsi::Device, matches: &Matches) {
+  let cmd = commands::WriteFilemarks16 {
+    fcs: matches.opt_present("fcs"),
+    lcs: matches.opt_present("lcs"),
+    immed: matches.opt_present("immed"),
+    partition: get_opt_or_return!("partition", matches),
+    logical_object_identifier:
+        get_opt_or_return!("logical_object_identifier", matches),
+    filemark_count: get_opt_or_return!("filemark_count", matches),
+  };
+
+  println!("Issuing: {:#?}", cmd);
+  let result = device.issue_cmd(&cmd);
+  print_status_or_return_error!(result, cmd);
+}
 
 fn write_filemarks_6(device: &mut scsi::Device, matches: &Matches) {
   let cmd = commands::WriteFilemarks6 {
@@ -546,5 +1085,5 @@ fn write_filemarks_6(device: &mut scsi::Device, matches: &Matches) {
 
   println!("Issuing: {:#?}", cmd);
   let result = device.issue_cmd(&cmd);
-  print_status_or_error_and_return!(result, cmd);
+  print_status_or_return_error!(result, cmd);
 }

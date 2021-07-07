@@ -14,16 +14,16 @@ impl ReadPosition {
   pub const SHORT_FORM_VENDOR: u8 = 0x1;
   pub const LONG_FORM: u8 = 0x6;
   pub const EXTENDED_FORM: u8 = 0x8;
-  pub const SHORT_FORM_LEN: u16 = 20;
-  pub const LONG_FORM_LEN: u16 = 32;
-  pub const EXTENDED_FORM_LEN: u16 = 32;
+  pub const SHORT_FORM_LEN: usize = 20;
+  pub const LONG_FORM_LEN: usize = 32;
+  pub const EXTENDED_FORM_LEN: usize = 32;
   const OP_CODE: u8 = 0x34;
   
   pub fn new() -> ReadPosition {
     Default::default()
   }
 
-  pub fn output_len(&self) -> u16 {
+  pub fn output_len(&self) -> usize {
     match self.service_action {
       ReadPosition::SHORT_FORM_BLOCK | ReadPosition::SHORT_FORM_VENDOR => {
         ReadPosition::SHORT_FORM_LEN
