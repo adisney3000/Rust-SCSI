@@ -240,7 +240,7 @@ impl Device {
 
   pub fn close(&mut self) {
     if let Some(fd) = self.sg_fd {
-      unsafe {libc::close(fd);}
+      unsafe { libc::close(fd); }
       self.sg_fd = None;
     }
   }

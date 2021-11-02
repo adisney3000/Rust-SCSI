@@ -291,7 +291,7 @@ fn fill_commands(commands: &mut BTreeMap <&str, ShellCommand>) {
   options.reqopt("", "code", "determines type of object to space over", "<u8>");
   options.reqopt("", "count", "number of objects to space over", "<u64>");
   options.optflag("", "position", "if set, position based on partition and logical_object_identifier before spacing");
-  options.optopt("p", "partition", "partition", "<u8>");
+  options.optopt("p", "partition_number", "partition", "<u8>");
   options.optopt("", "logical_object_identifier", "logical object identifier TODO", "<u64>");
   commands.insert("space_16",
       ShellCommand { func:space_16, options });
